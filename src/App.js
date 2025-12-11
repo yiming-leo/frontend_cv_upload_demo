@@ -1,8 +1,26 @@
 import './App.css';
 import uploadYourResume from "./assets/uploadYourResume.png"
 import FileUploadWindow from "./features/fileUpload";
+import ProgressBar from "./features/progressBar";
+import StandardButton from "./features/standardButton";
+import {useState} from "react";
 
 export default function App() {
+    // set file upload useState at app.js, for handling `finish` button
+    // uploadedFiles: the files uploaded
+    const [uploadedFiles, setUploadedFiles] = useState([])
+    // for passing `allFiles` other sub-component while `allFiles` is changed
+    const [allFiles, setAllFiles] = useState([])
+    // when new files about to upload, receive data from FileUploadWindow's setUploadFiles
+    const handleNewFiles = (newFiles) => {
+        const allFiles = [...uploadedFiles, ...newFiles]
+        setAllFiles(prev => [...prev, ...newFiles])
+        setUploadedFiles(allFiles)
+        // `allFiles` represents the committed result
+        // console.log('New Files:', newFiles)
+        // console.log('All Files:', allFiles)
+    }
+
     return (
         <div className="App">
             {/*1. main content frame of page*/}
@@ -22,12 +40,13 @@ export default function App() {
                     </div>
                     {/*6. upload window*/}
                     <div className="White-panel-upload-window">
-                        <FileUploadWindow></FileUploadWindow>
+                        <FileUploadWindow setUploadFiles={handleNewFiles} allFiles={allFiles}>
+                        </FileUploadWindow>
                     </div>
                     {/*7. button for step*/}
                     <div className="White-panel-button">
-                        <StandardButton name="Last Step" available={0}></StandardButton>
-                        <StandardButton name="Finish" available={1}></StandardButton>
+                        <StandardButton id={1} name="Last Step" available={0}></StandardButton>
+                        <StandardButton id={2} name="Finish" available={1}></StandardButton>
                     </div>
                     {/*8. progress bar*/}
                     <ProgressBar></ProgressBar>
@@ -42,22 +61,3 @@ export default function App() {
     );
 }
 
-function StandardButton(props) {
-    const {name, available} = props
-    return (
-        // control name and available
-        <button className="Standard-button"
-                disabled={available === 0}
-        >
-            {name}
-        </button>
-    )
-}
-
-function ProgressBar(){
-    return(
-        <div className="Withe-panel-progress-bar">
-            111
-        </div>
-    )
-}

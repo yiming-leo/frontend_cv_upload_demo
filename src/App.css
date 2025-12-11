@@ -68,6 +68,7 @@
 
 .White-panel-title {
     width: 70%;
+    height: 12%;
     /*border: black 1px solid;*/
 }
 
@@ -82,28 +83,35 @@
 
 .White-panel-upload-window {
     width: 70%;
-    height: 55%;
+    height: 60%;
 }
 
 .White-panel-button {
     height: 10%;
-    border: black 1px solid;
+    width: 70%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: black 1px solid;*/
 }
 
 .Withe-panel-progress-bar {
     height: 10%;
-    border: black 1px solid;
+    /*border: black 1px solid;*/
 }
+
+/*below from StandardButton*/
 
 .Standard-button {
     margin: 10px;
     border: none;
     border-radius: 10px;
-    width: 250px;
-    height: 60px;
+    width: 40%;
+    height: 70%;
     background-color: #1B5AFF;
     color: white;
-    font-size: 26px;
+    font-size: 22px;
 
     transition: all 0.3s ease;
 }
@@ -118,8 +126,159 @@
     cursor: not-allowed;
 }
 
+/*below from ProgressBar*/
 .Withe-panel-progress-bar {
-    border: black 1px solid;
+    width: 40%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    /*border: black 1px solid;*/
+}
+
+.Progress-bar-line-did {
+    position: absolute;
+
+    width: 80%;
+    height: 10%;
+    z-index: 2;
+
+    border-radius: 4px;
+    background: #85A7FF;
+}
+
+.Progress-bar-circle-wrapper {
+    width: 100%;
+    z-index: 3;
+
+    display: flex;
+    justify-content: space-around;
+    /*border: black 1px solid;*/
+}
+
+.Progress-bar-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    border: 4px solid #2A4CFE;
+    box-shadow: 0px 7px 64px 0px #00000012;
+
+    display: grid;
+    place-items: center;
+
+    background: #85A7FF;
+}
+
+.Finished-icon {
+    width: 50%;
+    height: 40%;
+    /*border: black 1px solid;*/
+}
+
+.Step-icon {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    color: white;
+    /*border: black 1px solid;*/
+}
+
+.Progress-bar-line {
+    position: absolute;
+
+    width: 100%;
+    height: 10%;
+    z-index: 1;
+
+    border-radius: 4px;
+    background: #DDE0E7;
+}
+
+/*below from FileUploadWindow*/
+.upload-window-entity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #F2FAFF;
+    border: 1px dashed #0538BB;
+    border-radius: 15px;
+
+    width: 100%;
+    height: 80%;
+    /*border: black 1px solid;*/
+
+    transition: all 0.3s ease;
+}
+
+/*border color change when cursor over drop-window*/
+.drag-over {
+    box-shadow: inset 0px 0px 11px 1px #85A7FF;
+}
+
+.uploaded-list {
+    width: 100%;
+    height: 15%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+
+    /*border: black 1px solid;*/
+}
+
+.file-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    width: 28%;
+    height: 65%;
+    margin: 4px;
+    padding: 0px 5px 0px 5px;
+
+    border: 1px solid #1B5AFF;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0px 2px 20px 0px #13437026;
+
+    /*border: black 1px solid;*/
+}
+
+.file-item span, .file-item p {
+    font-size: 14px;
+    color: #1B5AFF;
+
+    /*border: black 1px solid;*/
+}
+
+.upload-window-entity:hover {
+    cursor: pointer;
+}
+
+.upload-window-entity img {
+    width: 12%;
+    height: 13%;
+}
+
+.upload-window-entity desc {
+    vertical-align: middle;
+    horiz-align: center;
+    text-align: center;
+    width: 80%;
+    height: 10%;
+
+    color: #A5A5A5;
+    margin: 10px;
 }
 
 .Image-upload-your-resume {
@@ -132,44 +291,67 @@
     /*border: black 1px solid;*/
 }
 
-/*from FileUploadWindow*/
-.upload-window-entity {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* ---Media Inquiry--- */
+@media (max-width: 800px) {
+    .App {
+        flex-direction: column;
+        padding: 20px 20px;
+        height: auto;
+    }
 
-    background: #F2FAFF;
-    border: 1px dashed #0538BB;
-    border-radius: 15px;
+    .Text-content {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-    width: 100%;
-    height: 85%;
-    /*border: black 1px solid;*/
-}
+    .Text-content h1 {
+        font-size: 28px;
+        line-height: 38px;
+    }
 
-.uploaded-list {
-    width: 100%;
-    height: 15%;
-    border: black 1px solid;
-}
+    .Text-content desc {
+        font-size: 16px;
+        line-height: 28px;
+    }
 
-.upload-window-entity:hover {
-    cursor: pointer;
-}
+    .Upload-content {
+        flex: none;
+        width: 100%;
+        padding: 10px 0;
+    }
 
-.upload-window-entity img {
-    width: 10%;
-    height: 10%;
-}
+    .White-panel {
+        width: 100%;
+        height: auto;
+        padding: 20px 0;
+    }
 
-.upload-window-entity desc {
-    vertical-align: middle;
-    horiz-align: center;
-    text-align: center;
-    width: 80%;
-    height: 10%;
+    .White-panel-upload-window {
+        width: 90%;
+        height: 300px;
+    }
 
-    color: #A5A5A5;
-    margin: 10px;
+    .Standard-button {
+        width: 80%;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .uploaded-list {
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .file-item {
+        width: 45%;
+        height: auto;
+        padding: 6px;
+    }
+
+    .upload-window-entity img {
+        width: 20%;
+        height: auto;
+    }
 }
